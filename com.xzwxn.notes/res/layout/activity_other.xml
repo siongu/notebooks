@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/line"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00000000" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/edit_title_white"
+        android:hint="@string/input_title"
+        android:maxLength="30"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textCursorDrawable="@drawable/cursor_t"
+        android:textSize="22sp" />
+    <!--
+		  1、加上ScrollView后，当文本框的内容显示满了后可以通过ScrollView进行上下滚动浏览，并且在上下滚动的过程中不会激活软键盘
+		  若不加ScrollView，滚动的过程中触摸时很容易激活软键盘，用户体验很不好！
+		  2、EditText的背景图片要放在外层的ScrollView上，然后把EditText的背景设为透明即可，否则在大屏幕上会出现剩余空间没有被占满的情况。
+		  3、关于光标的设置，这是个比较头疼的问题，没有直接设置光标的方法，可以通过给光标设置drawable对象来改变光标的外观，一般情况下
+		  只能改变外观，由于行距的变化会使得光标的高度发生变化并且更糟糕的是光标下端与分割线没有对齐老是超出分割线以外，看起来很不爽快
+		  如果想要分割线下端与光标对齐可以通过设置分割线的位置使他们对齐，但这样一来，每行里面的文本内容的下端与分割线之间又留了很大空间，
+		  看起来也是很不爽快，难道就没一个两全齐美的办法吗？办法当然有了，设置起来也很方便，就是将光标的下端裁剪掉一部分使之与分割线之间
+		  对齐而又不影响文本与分割线之间的间距，裁剪的办法可以通过word进行裁剪(一直以为word就是用来处理文本的，其实它的功能相当强大，
+		  远不止如此)，这是办法之一，当然通过自定义也可能实现，这种方式没试过，还不知道如何通过这种方式去实现。
+			(*** 3、加上LinearLayout是为了把ScrollView里面的EditText的高度撑起来，若不加的话无法设置EditText的高度数值，不能根据
+		  实际情况来改变高度，这可能是加了ScrollView后出现的情况。该EditText的高度是在该view的类里面设置的。这个LinearLayout
+		  可加可不加，以实际情况而定)
+    -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_white"
+        android:overScrollMode="always" >
+
+        <com.android.note.views.DividerEditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:gravity="top"
+            android:lineSpacingExtra="6px"
+            android:lineSpacingMultiplier="1.4"
+            android:minLines="20"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="20sp" />
+    </ScrollView>
+
+</LinearLayout>

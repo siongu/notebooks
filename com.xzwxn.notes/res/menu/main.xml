@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	<group android:enabled="true">
+	 <item
+        android:id="@+id/action_cancel"
+        android:icon="@drawable/ic_dialog_browser_security_bad"
+        android:title="@string/action_cancel"/>
+    <item
+        android:id="@+id/action_selectall"
+        android:icon="@drawable/ic_dialog_browser_security_good"
+        android:title="@string/action_selectall" />
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/gadget_clear_button_fore_low_pressed"
+        android:title="@string/action_delete" 
+       />
+    <item
+        android:id="@+id/action_invert_select"
+        android:icon="@drawable/btn_inline_delete_normal_light"
+        android:title="@string/action_invert_select" 
+       />
+</group>
+</menu>
